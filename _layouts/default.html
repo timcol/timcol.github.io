@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }} – {{ site.title }}</title>
+    
+    <!-- Tufte CSS (from CDN) and the (optional) ETBembo + Source Sans Pro fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.8.0/tufte.css">
+    <link href="https://fonts.googleapis.com/css2?family=ETBembo:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom styles for a sticky footer while preserving Tufte's centered layout -->
+    <style>
+      /* Make the full viewport height available */
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+      
+      /* Turn body into a flex container and center its content horizontally */
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: none;
+      }
+      
+      /* The article is our main container.
+         It is centered via auto left/right margins and constrained to a max width.
+         It also becomes a flex container so the section can expand and push the footer down. */
+      article {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        max-width: 160em;
+        margin: 0 auto;
+        padding: 1rem; /* Optional padding to keep things from the very edge */
+      }
+      
+      /* The section expands to fill the available space */
+      section {
+        flex: 1;
+      }
+      
+      /* Dark mode styling */
+      html[data-theme="dark"] body {
+        background-color: #151515 !important;
+        color: #ddd !important;
+      }
+      
+      /* Light mode styling */
+      html[data-theme="light"] body {
+        background-color: #fffff8 !important;
+        color: #111 !important;
+      }
+      
+      /* Dark-mode link color */
+      html[data-theme="dark"] a {
+        color: #a3c0ff !important;
+      }
+      
+      /* Light-mode link color (optional) */
+      html[data-theme="light"] a {
+        color: inherit !important;
+      }
+      
+      /* Style the toggle button */
+      #theme-toggle {
+        padding: 0.5rem 1rem;
+        margin-top: 1rem;
+        background-color: #eee;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      
+      /* Adjust toggle button colors in dark mode */
+      html[data-theme="dark"] #theme-toggle {
+        background-color: #333;
+        color: #fff;
+      }
+
+      /* 
+         ---------------------------------------------------------------------------
+         FIX: Remove Tufte’s light-mode letterpress text-shadow that can cause 
+              “ghosted” or “duplicated” letters. Also adjust font-smoothing.
+         ---------------------------------------------------------------------------
+      */
+      html[data-theme="light"] body,
+      html[data-theme="light"] a,
+      html[data-theme="light"] h1,
+      html[data-theme="light"] h2,
+      html[data-theme="light"] h3,
+      html[data-theme="light"] h4,
+      html[data-theme="light"] h5,
+      html[data-theme="light"] h6 {
+        text-shadow: none !important;
+        -webkit-font-smoothing: antialiased !important; /* or 'subpixel-antialiased' */
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>
+          <a href="{{ site.baseurl | prepend: site.url }}">{{ site.title }}</a>
+        </h1>
+        <!-- Toggle button for light/dark theme -->
+        <button id="theme-toggle">Toggle Light/Dark</button>
+        {% if page.subtitle %}
+          <p class="subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+      </header>
+
+      <!-- Main content wrapped in a section -->
+      <section>
+        {{ content }}
+      </section>
+
+      <footer>
+        <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+      </footer>
+    </article>
+
+    <!-- Theme toggle script -->
+    <script>
+      (function() {
+        const themeToggleBtn = document.getElementById("theme-toggle");
+        const rootElement = document.documentElement; // the <html> element
+
+        // Check localStorage for the user's theme preference
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme) {
+          rootElement.setAttribute("data-theme", storedTheme);
+        }
+
+        // Listen for clicks on the toggle button
+        themeToggleBtn.addEventListener("click", function() {
+          let currentTheme = rootElement.getAttribute("data-theme");
+          if (currentTheme === "dark") {
+            rootElement.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+          } else {
+            rootElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
+

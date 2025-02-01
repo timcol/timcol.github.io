@@ -1,0 +1,28 @@
+---
+layout: default
+title:  "Understanding Zero-Day Vulnerabilities"
+date:   2024-05-01 00:00:00 -0500
+categories: [cybersecurity, blog, zero-day]
+---
+
+**Zero-day vulnerabilities** are security flaws in software or hardware that are unknown to the party responsible for patching or fixing the vulnerability. 
+By definition, these vulnerabilities are discovered by malicious actors, [white hat][1] researchers, or third parties, but there's essentially “zero days” 
+for the vendor to fix them before they can be exploited.[^1]
+
+## Why Zero-Days Matter
+
+Zero-day exploits can have catastrophic consequences, including data breaches, system compromises, and infiltration by advanced persistent threats (APTs). 
+Attackers that utilize zero-day exploits tend to be well-funded (such as nation-state threat actors), but not always.[^2]
+
+## Prevention & Mitigation
+
+1. **Frequent System Updates**  
+   Regularly patching known vulnerabilities reduces the overall attack surface—even if a zero-day initially slips through.
+2. **Advanced Intrusion Detection**  
+   Suspicious behavior or anomalies can sometimes be caught, even if the exploit is unknown.
+3. **Threat Intelligence**  
+   Monitoring threat intelligence feeds helps security teams respond more quickly when new exploits emerge.
+
+[1]: https://en.wikipedia.org/wiki/White_hat_(computer_security) "White hat hackers"
+[^1]: “Zero day” means there’s effectively no time between the discovery and initial exploitation.
+[^2]: Some zero-days are discovered and sold on the black market, making them accessible to lower-level cybercriminals who have enough money to purchase them.

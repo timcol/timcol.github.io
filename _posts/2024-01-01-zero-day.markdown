@@ -1,0 +1,43 @@
+---
+layout: default
+title:  "Testing Tufte Sidenotes and Margin Notes"
+date:   2024-05-10 00:00:00 -0500
+categories: [test, tufte]
+---
+
+# Tufte CSS Test Post
+
+Welcome to a quick test of **Tufte CSS** margin notes and sidenotes on a wide screen! Resize your browser to see how they behave.
+
+## Sidenote Example
+
+Here's some text.  
+<label for="sn-example" class="margin-toggle sidenote-number"></label>
+<input type="checkbox" id="sn-example" class="margin-toggle" />
+<span class="sidenote">
+  This is a sidenote. On wide screens, it floats in the right margin. 
+  On narrow screens, you tap/click the footnote number to toggle it.
+</span>
+
+Keep in mind that Tufte’s design places notes in the margin if there's enough horizontal space. 
+On phones or small widths, they’re hidden until triggered.
+
+## Margin Note Example
+
+Margin notes are like sidenotes, **but** they don't have a footnote number. 
+They typically have a plus sign <code>+</code> toggle on narrow screens.
+
+<label for="mn-why-margin" class="margin-toggle">&#8853;</label>
+<input type="checkbox" id="mn-why-margin" class="margin-toggle" />
+<span class="marginnote">
+  This is a margin note with no numbered reference. 
+  On wide screens, it appears in the margin with no superscript.
+</span>
+
+## Extra Check
+
+When you scroll on wide screens, notes should remain aligned with the text. 
+Make sure nothing is cut off or hidden. If the notes vanish or overflow, 
+verify there's no <code>overflow: hidden;</code> set in your layout.
+
+**Happy testing!**
