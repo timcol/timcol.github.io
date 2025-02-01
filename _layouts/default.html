@@ -1,70 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ page.title }} – {{ site.title }}</title>
     
-    <!-- Tufte CSS (from CDN) and the (optional) ETBembo + Source Sans Pro fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.8.0/tufte.css">
-    <link href="https://fonts.googleapis.com/css2?family=ETBembo:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom styles for a sticky footer while preserving Tufte's centered layout -->
+    <!-- Tufte CSS (from CDN) and optional ETBembo + Source Sans Pro fonts -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.8.0/tufte.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=ETBembo:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for a sticky footer and a wider layout -->
     <style>
-      /* Make the full viewport height available */
-      html, body {
+      /* Ensure full viewport height and remove default margins */
+      html,
+      body {
         height: 100%;
         margin: 0;
       }
-      
-      /* Turn body into a flex container and center its content horizontally */
+
+      /* Override Tufte's max-width to allow a wider layout.
+         Tufte sets max-width: 1400px by default; change it here. */
+      body {
+        max-width: 1800px; /* Change to your preferred maximum width or use 'none' for full width */
+      }
+
+      /* Enable sticky footer with flexbox.
+         IMPORTANT: Do not set align-items: center or any width restrictions here—
+         let Tufte’s own rules (applied via tufte.css) control the general layout. */
       body {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        max-width: none;
       }
-      
-      /* The article is our main container.
-         It is centered via auto left/right margins and constrained to a max width.
-         It also becomes a flex container so the section can expand and push the footer down. */
+
+      /* Allow the article to expand to fill available vertical space */
       article {
         display: flex;
         flex-direction: column;
         flex: 1;
-        width: 100%;
-        max-width: 160em;
-        margin: 0 auto;
-        padding: 1rem; /* Optional padding to keep things from the very edge */
       }
-      
-      /* The section expands to fill the available space */
+
+      /* Main content area */
       section {
         flex: 1;
       }
-      
+
       /* Dark mode styling */
       html[data-theme="dark"] body {
         background-color: #151515 !important;
         color: #ddd !important;
       }
-      
+
       /* Light mode styling */
       html[data-theme="light"] body {
         background-color: #fffff8 !important;
         color: #111 !important;
       }
-      
+
       /* Dark-mode link color */
       html[data-theme="dark"] a {
         color: #a3c0ff !important;
       }
-      
-      /* Light-mode link color (optional) */
+
+      /* Light-mode link color */
       html[data-theme="light"] a {
         color: inherit !important;
       }
-      
+
       /* Style the toggle button */
       #theme-toggle {
         padding: 0.5rem 1rem;
@@ -74,19 +81,14 @@
         cursor: pointer;
         border-radius: 5px;
       }
-      
+
       /* Adjust toggle button colors in dark mode */
       html[data-theme="dark"] #theme-toggle {
         background-color: #333;
         color: #fff;
       }
 
-      /* 
-         ---------------------------------------------------------------------------
-         FIX: Remove Tufte’s light-mode letterpress text-shadow that can cause 
-              “ghosted” or “duplicated” letters. Also adjust font-smoothing.
-         ---------------------------------------------------------------------------
-      */
+      /* Remove Tufte’s default light-mode text-shadow */
       html[data-theme="light"] body,
       html[data-theme="light"] a,
       html[data-theme="light"] h1,
@@ -96,7 +98,7 @@
       html[data-theme="light"] h5,
       html[data-theme="light"] h6 {
         text-shadow: none !important;
-        -webkit-font-smoothing: antialiased !important; /* or 'subpixel-antialiased' */
+        -webkit-font-smoothing: antialiased !important;
       }
     </style>
   </head>
@@ -137,7 +139,7 @@
 
         // Listen for clicks on the toggle button
         themeToggleBtn.addEventListener("click", function() {
-          let currentTheme = rootElement.getAttribute("data-theme");
+          const currentTheme = rootElement.getAttribute("data-theme");
           if (currentTheme === "dark") {
             rootElement.setAttribute("data-theme", "light");
             localStorage.setItem("theme", "light");
@@ -150,4 +152,3 @@
     </script>
   </body>
 </html>
-
