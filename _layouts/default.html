@@ -157,15 +157,21 @@
         text-decoration: none;
       }
 
+      /* Add extra space before the footer */
+      footer {
+        margin-top: 5.5rem;
+      }
+
       /* CUSTOM OVERRIDES for Small Screens */
       @media (max-width: 760px) {
-        /* Remove extra top margin from the header h1 */
+        /* Remove extra spacing from the site title */
         header h1 {
-          margin-top: 0;
+          margin: 0; /* Remove both top and bottom margins */
+          padding: 0;
         }
-        /* Reduce the top padding on the article to minimize space above post titles */
+        /* Remove extra padding at the start of the article */
         article {
-          padding-top: 0.5rem;
+          padding-top: 0;
         }
         /* Remove right margin from the theme toggle for a flush alignment */
         .theme-toggle-wrapper {
