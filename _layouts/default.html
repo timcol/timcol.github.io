@@ -117,15 +117,14 @@
         width: 1.6rem;     /* Bigger handle */
         height: 1.6rem;
         border-radius: 50%;
-        background-color: #fff;
+        background-color: #000; /* Black handle in light mode */
         transition: transform 0.3s, background-color 0.3s;
       }
 
-      /* Adjust the translation so the handle moves to the far right,
-         leaving the same gap on that side */
+      /* Move the handle to the right in dark mode and change its color to white */
       html[data-theme="dark"] .theme-toggle::after {
         transform: translateX(2.2rem);
-        background-color: #ffdb4d;
+        background-color: #fff; /* White handle in dark mode */
       }
 
       /* Theme icons */
@@ -232,3 +231,4 @@
     </script>
   </body>
 </html>
+
